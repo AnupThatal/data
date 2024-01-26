@@ -22,7 +22,7 @@ if municipality=='Lalitpur':
     ward = col3.selectbox("select the ward",[i for i in range(1,30)])
 
 contact_number = col1.text_input("Enter the contact number")
-phone_number = col2.text_input("Enter the alternative phone number")
+phone_number = col2.text_input("Enter the phone number")
 Landmark = col3.text_input("Enter the Landmark")
 
 if st.button("Generate Report"):
