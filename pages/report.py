@@ -1,17 +1,21 @@
 import streamlit as st
 import pandas as pd
+import os
+from PIL import Image
 
 st.title('Customer Info')
 
 # Load existing data from CSV (if any)
-try:
-    existing_data = pd.read_csv('customer_data.csv')
-except FileNotFoundError:
-    existing_data = pd.DataFrame(columns=['Customer ID', 'Connection Number', 'Customer Name', 'Municipality', 'Area', 'Ward', 'Contact Number', 'Alternative Phone Number', 'Landmark'])
+csv_file_path = 'customer_data.csv'
+if os.path.exists(csv_file_path):
+    existing_data = pd.read_csv(csv_file_path)
+else:
+    existing_data = pd.DataFrame(columns=['Customer ID', 'Connection Number', 'Customer Name', 'Municipality', 'Area', 'Ward', 'Contact Number', 'Alternative Phone Number', 'Landmark', 'Image Path'])
 
 df1 = pd.read_csv('HHC_Data.csv')
 
 col1, col2, col3 = st.columns(3)
+
 
 customer_id = col1.text_input("Enter customer id")
 connection_number = col2.text_input("Enter connection number")
@@ -53,9 +57,5 @@ if st.button("Add customer data"):
     # Save the updated data to CSV
     updated_data.to_csv('customer_data.csv', index=False)
 
-    
-
-    # Display the report
     st.text("Generated Report:")
     st.text(report)
-
