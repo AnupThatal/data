@@ -65,4 +65,4 @@ with col1:
             folium.Marker([lat[i], lon[i]], icon=folium.Icon(icon="circle", prefix='fa', icon_color='blue', icon_size=(2,2))).add_to(folium_map)
 
         # Display the Folium map using streamlit_folium
-        st_folium(folium_map,width=2000, height=1000)
+        st_folium(folium_map,width=1500, height=800)
