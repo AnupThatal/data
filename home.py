@@ -30,11 +30,11 @@ with st.sidebar:
 
         packages = filtered_df['gb10-b10_package'].values[0]
         sub_dmi_counts = filtered_df['b10_sub_dmi'].value_counts()
-        st.write(f"Municipality:blue[{mun}]")
+        st.write(f"Municipality :blue[{mun}]")
         st.write(f"ward of that areas :blue[{ward}]")
         st.write(f'Packages of :blue[{packages}]')
         st.write(f"Packages of :blue[{SDMA}]")
-        st.write(f"Counts of HHC:{HHC}")
+        st.write(f"Counts of HHC :blue[{HHC}]")
 
         st.write(sub_dmi_counts)
 
