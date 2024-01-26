@@ -4,8 +4,11 @@ import folium
 from folium import plugins
 from streamlit_folium import st_folium
 
+
 st.set_page_config(
-    page_title='Homepage'
+    page_title='Homepage',
+    page_icon=':earth_americas:',  # Use an emoji as the page icon
+
 )
 df = pd.read_csv('df_final.csv')
 df1=pd.read_csv('HHC_Data.csv')
@@ -23,12 +26,16 @@ with st.sidebar:
         HHC=filtered_location_df['SDMA wise HHC'].values[0]
         SDMA=filtered_location_df['sDMA'].values[0]
         ward=filtered_location_df['ward number'].values[0]
+        mun=filtered_location_df['District'].values[0]
+
         packages = filtered_df['gb10-b10_package'].values[0]
         sub_dmi_counts = filtered_df['b10_sub_dmi'].value_counts()
+        st.write(f"Municipality:blue[{mun}]")
         st.write(f"ward of that areas :blue[{ward}]")
         st.write(f'Packages of :blue[{packages}]')
         st.write(f"Packages of :blue[{SDMA}]")
         st.write(f"Counts of HHC:{HHC}")
+
         st.write(sub_dmi_counts)
 
 # Main content
@@ -51,7 +58,7 @@ with col1:
         center_lon = sum(lon) / len(lon) if len(lon) > 0 else 0
 
         # Create a Folium map centered at the mean of coordinates
-        folium_map = folium.Map(location=[center_lat, center_lon], zoom_start=13)
+        folium_map = folium.Map(location=[center_lat, center_lon], zoom_start=16)
 
         # Add markers for each location with smaller icon
         for i in range(len(lat)):
