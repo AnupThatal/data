@@ -7,10 +7,6 @@ from streamlit_folium import st_folium
 st.set_page_config(
     page_title='Homepage'
 )
-
-st.title('Main page')
-st.sidebar.success('Select a page sucess')
-
 df = pd.read_csv('df_final.csv')
 df1=pd.read_csv('HHC_Data.csv')
 
@@ -62,4 +58,4 @@ with col1:
             folium.Marker([lat[i], lon[i]], icon=folium.Icon(icon="circle", prefix='fa', icon_color='blue', icon_size=(2,2))).add_to(folium_map)
 
         # Display the Folium map using streamlit_folium
-        st_folium(folium_map)
+        st_folium(folium_map,width=700, height=500)
